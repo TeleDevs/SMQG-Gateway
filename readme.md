@@ -45,7 +45,7 @@ Neste ponto já possível acessar remotamente a Raspberry Pi.
 
 ## ERRO 01
 
-```
+```console
 ttn@raspberrypi:~ $ sudo systemctl status gateway -l
 ● gateway.service - TTN Gateway Service
    Loaded: loaded (/etc/systemd/system/gateway.service; enabled; vendor preset: enabled)
