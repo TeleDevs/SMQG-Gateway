@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textViewTitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Comunicação Bluetooth em tempo real:" />
+
+    <TextView
+        android:id="@+id/receive_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:freezesText="true"
+        android:gravity="bottom"
+        android:scrollbars="vertical"
+        android:background="@drawable/bordas"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:id="@+id/textViewTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Coletar média de 15 dias:" />
+
+    <Button
+        android:id="@+id/botaoExecutar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/bordas_botao"
+        android:layout_below="@id/receive_text"
+        android:text="Coletar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:background="?android:attr/listDivider"
+        android:layout_height="2dp" />
+
+    <TextView
+        android:id="@+id/textViewTitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Média dos dados:" />
+
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:text="Identificador"
+                android:layout_weight="1"
+                android:padding="20dip"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/TextView02"
+                android:text="Temperatura"
+                android:layout_weight="1"
+                android:padding="20dip"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/TextView03"
+                android:text="Umidade"
+                android:layout_weight="1"
+                android:padding="20dip"
+                android:gravity="center"/>
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/identificador"
+                android:layout_weight="1"
+                android:background="@drawable/bordas"
+                android:padding="20dip"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/temp"
+                android:layout_weight="1"
+                android:background="@drawable/bordas"
+                android:padding="20dip"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/umi"
+                android:layout_weight="1"
+                android:background="@drawable/bordas"
+                android:padding="20dip"
+                android:gravity="center"/>
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:id="@+id/textViewTitle4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="Enviar para a nuvem:" />
+    <Button
+        android:id="@+id/botoaMosquitto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/bordas_botao"
+        android:layout_below="@id/receive_text"
+        android:text="Enviar" />
+
+
+</LinearLayout>
+
