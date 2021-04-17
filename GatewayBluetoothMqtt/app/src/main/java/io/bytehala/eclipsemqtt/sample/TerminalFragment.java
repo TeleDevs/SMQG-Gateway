@@ -46,6 +46,9 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.content.ContentValues.TAG;
 
 public class TerminalFragment extends Fragment implements ServiceConnection, SerialListener {
@@ -61,6 +64,7 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
     private TextView tempText;
     private TextView sendText;
     private TextUtil.HexWatcher hexWatcher;
+    private String idGateway = "100";
 
     private Connected connected = Connected.False;
     private boolean initialStart = true;
@@ -175,8 +179,6 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
         View sendBtn15 = view.findViewById(R.id.botaoExecutar15);
         sendBtn15.setOnClickListener(v -> send("{\"cod\":2}"));
 
-        View nuvemBtn = view.findViewById(R.id.botoaMosquitto);
-        nuvemBtn.setOnClickListener(v -> sendMqtt());
         this.viewww = view;
         return view;
     }
@@ -245,19 +247,10 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
         service.disconnect();
     }
 
-    private void sendMqtt(){
-//        String payload = "{\"value1\":20,\"value2\":2}";
-//        MqttMessage message = new MqttMessage(payload.getBytes());
-//        try {
-//            client.publish("SMQG", message);
-//        } catch (MqttException e) {
-//            e.printStackTrace();
-//        }
-        Toast.makeText(getActivity(), "MQTT", Toast.LENGTH_SHORT).show();
-    }
+
     private void send(String str) {
         if(connected != Connected.True) {
-            Toast.makeText(getActivity(), "not connected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Bluetooth não conectado", Toast.LENGTH_SHORT).show();
             return;
         }
         try {
@@ -281,15 +274,20 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
             onSerialIoError(e);
         }
     }
-    static String lido;
+    static ArrayList<Coletas> listaColetas = new ArrayList();
 
-    public void setLeitura(String d){
-        lido = d;
+    public void setLeitura(Coletas d){
+        listaColetas.add(d);
     }
 
-    public static String getLeitura(){
-        return lido;
+    public static Coletas getLeitura(){
+        return listaColetas.remove(0);
     }
+
+    public static int getTamanhoListaColetas(){
+        return listaColetas.size();
+    }
+
     private void receive(byte[] data) {
         if(hexEnabled) {
             receiveText.append(TextUtil.toHexString(data) + '\n');
@@ -297,11 +295,18 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
             String msg = new String(data);
             try {
                 JSONObject jsonObject = new JSONObject(msg);
-                if(!jsonObject.has("idi")) {
-                    idText.setText(jsonObject.get("id").toString());
-                    tempText.setText(jsonObject.get("tmp").toString());
-                    umiText.setText(jsonObject.get("umi").toString());
-                    this.setLeitura("teste");
+                if(jsonObject.has("id") && jsonObject.has("tmp") && jsonObject.has("umi")) {
+                    String idLido = jsonObject.get("id").toString();
+                    String tempLida = jsonObject.get("tmp").toString();
+                    String umiLida = jsonObject.get("umi").toString();
+
+                    idText.setText(idLido);
+                    tempText.setText(tempLida);
+                    umiText.setText(umiLida);
+
+                    Coletas c = new Coletas(idLido, idGateway, tempLida, umiLida, "sem data...");
+
+                    this.setLeitura(c);
                 }else {
                     idText.setText(jsonObject.get("idi").toString());
                 }

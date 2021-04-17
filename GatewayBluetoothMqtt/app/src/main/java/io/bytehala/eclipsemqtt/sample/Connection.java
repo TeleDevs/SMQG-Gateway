@@ -133,9 +133,9 @@ public class Connection {
     this.sslConnection = sslConnection;
     history = new ArrayList<String>();
     StringBuffer sb = new StringBuffer();
-    sb.append("Client: ");
+    sb.append("Cliente: ");
     sb.append(clientId);
-    sb.append(" created");
+    sb.append(" criado");
     addAction(sb.toString());
   }
 

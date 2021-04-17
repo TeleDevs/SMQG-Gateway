@@ -56,7 +56,7 @@
         android:layout_marginEnd="0dp"
         android:background="@drawable/bordas_botao"
         android:layout_below="@id/receive_text"
-        android:text="Coletar 15 dias" />
+        android:text="Coletar armazenado" />
 
     <TextView
         android:id="@+id/textViewTitle3"
@@ -126,23 +126,6 @@
                 android:gravity="center"/>
         </TableRow>
     </TableLayout>
-    <TextView
-        android:id="@+id/textViewTitle4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:text="Enviar para a nuvem:" />
-    <Button
-        android:id="@+id/botoaMosquitto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="0dp"
-        android:background="@drawable/bordas_botao"
-        android:layout_below="@id/receive_text"
-        android:text="Enviar" />
-
 
 </LinearLayout>
 

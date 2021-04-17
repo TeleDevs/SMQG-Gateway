@@ -109,7 +109,8 @@ public class DevicesFragment extends ListFragment {
         args.putString("device", device.getAddress());
         fragment = new TerminalFragment();
         fragment.setArguments(args);
-        getFragmentManager().beginTransaction().replace(R.id.fragment, fragment, "terminal").addToBackStack(null).commit();
+//        getFragmentManager().beginTransaction().replace(R.id.fragment, fragment, "terminal").addToBackStack(null).commit();
+        getFragmentManager().popBackStackImmediate();
     }
 
     /**

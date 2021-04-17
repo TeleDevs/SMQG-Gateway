@@ -132,11 +132,11 @@ public class Listener implements OnMenuItemClickListener {
     }
     catch (MqttSecurityException e) {
       Log.e(this.getClass().getCanonicalName(), "Failed to reconnect the client with the handle " + clientHandle, e);
-      c.addAction("Client failed to connect");
+      c.addAction("Cliente falhou ao se conectar");
     }
     catch (MqttException e) {
       Log.e(this.getClass().getCanonicalName(), "Failed to reconnect the client with the handle " + clientHandle, e);
-      c.addAction("Client failed to connect");
+      c.addAction("Cliente falhou ao se conectar");
     }
 
   }

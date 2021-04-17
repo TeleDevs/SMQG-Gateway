@@ -4,7 +4,7 @@
     <item
         android:id="@+id/clear"
         android:title="Clear"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/conectBlu"
         android:title="BLU"

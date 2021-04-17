@@ -15,6 +15,7 @@ package io.bytehala.eclipsemqtt.sample;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.List;
 
 
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.view.Menu;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -353,7 +355,7 @@ public class ConnectionDetailsActivity extends AppCompatActivity implements
     if(selected == 2) {
       connectionDetails.findViewById(R.id.publishButton).setEnabled(connected);
       connectionDetails.findViewById(R.id.publishButton).setOnClickListener(
-              view -> publish(TerminalFragment.getLeitura())
+              view -> publish()
       );
     }
   }
@@ -399,7 +401,7 @@ public class ConnectionDetailsActivity extends AppCompatActivity implements
   /**
    * Publish the message the user has specified
    */
-  private void publish(String message){
+  private void publish(){
     String topic = "SMQG";
 
 
@@ -418,19 +420,26 @@ public class ConnectionDetailsActivity extends AppCompatActivity implements
       break;
   }
 
+
+
   boolean retained = false;
+    if (TerminalFragment.getTamanhoListaColetas() == 0){
+      Toast.makeText(this, "Lista de coletas vazia! Por favor, faça uma coleta antes", Toast.LENGTH_LONG).show();
+    }else {
+      while(!((TerminalFragment.getTamanhoListaColetas() == 0))) {
+        Coletas message = TerminalFragment.getLeitura();
+        String[] args = new String[2];
+        args[0] = message.toString();
+        args[1] = topic + ";qos:" + qos + ";retained:" + retained;
 
-  String[] args = new String[2];
-  args[0] = message;
-  args[1] = topic+";qos:"+qos+";retained:"+retained;
-
-    try {
-    Connections.getInstance(this).getConnection(clientHandle).getClient()
-            .publish(topic, message.getBytes(), qos, retained, null, new ActionListener(this, ActionListener.Action.PUBLISH, clientHandle, args));
-  } catch (MqttException e) {
-    Log.e(this.getClass().getCanonicalName(), "Failed to publish a messged from the client with the handle " + clientHandle, e);
-  }
-
+        try {
+          Connections.getInstance(this).getConnection(clientHandle).getClient()
+                  .publish(topic, message.toString().getBytes(), qos, retained, null, new ActionListener(this, ActionListener.Action.PUBLISH, clientHandle, args));
+        } catch (MqttException e) {
+          Log.e(this.getClass().getCanonicalName(), "Failed to publish a messged from the client with the handle " + clientHandle, e);
+        }
+      }
+    }
 }
 
 }

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -61,15 +62,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        adicionarBlu();
         setContentView(R.layout.client_connections);
-
         listView = findViewById(R.id.list);
         listView.setOnItemLongClickListener(new MainActivity.LongClickItemListener());
         listView.setTextFilterEnabled(true);
 
         listView.setOnItemClickListener((listView, view, position, id) -> {
 
-            if (!contextualActionBarActive) {
+            if(DevicesFragment.fragment == null){
+                adicionarBlu();
+            }
+            else if (!contextualActionBarActive) {
                 Connection c = arrayAdapter.getItem(position);
 
                 // start the connectionDetails activity to display the details about the

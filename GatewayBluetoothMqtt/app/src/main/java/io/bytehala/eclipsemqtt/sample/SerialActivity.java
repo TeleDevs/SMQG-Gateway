@@ -3,7 +3,7 @@ package io.bytehala.eclipsemqtt.sample;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+//import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 public class SerialActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
@@ -19,6 +19,7 @@ public class SerialActivity extends AppCompatActivity implements FragmentManager
             getSupportFragmentManager().beginTransaction().add(R.id.fragment, new DevicesFragment(), "devices").commit();
         else
             onBackStackChanged();
+//        onBackPressed();
     }
 
     @Override

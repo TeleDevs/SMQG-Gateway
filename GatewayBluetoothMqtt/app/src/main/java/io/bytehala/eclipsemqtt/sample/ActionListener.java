@@ -227,7 +227,7 @@ class ActionListener implements IMqttActionListener {
   private void connect(Throwable exception) {
     Connection c = Connections.getInstance(context).getConnection(clientHandle);
     c.changeConnectionStatus(Connection.ConnectionStatus.ERROR);
-    c.addAction("Client failed to connect");
+    c.addAction("Cliente falhou ao se conectar");
 
   }
 
