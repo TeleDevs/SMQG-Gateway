@@ -1,16 +1,68 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a3d8a40d7133497caa11051eaac6f1a2)](https://www.codacy.com/manual/kai-morich/SimpleBluetoothTerminal?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kai-morich/SimpleBluetoothTerminal&amp;utm_campaign=Badge_Grade)
+> :warning: **Please feel free to create issues if it does not run for you.
 
-# SimpleBluetoothTerminal
+# android-mqtt-quickstart [![Build Status](https://travis-ci.org/bytehala/android-mqtt-quickstart.svg?branch=master)](https://travis-ci.org/bytehala/android-mqtt-quickstart)
+Android Studio port of the Eclipse paho MQTT sample project.
 
-This Android app provides a line-oriented terminal / console for classic Bluetooth (2.x) devices implementing the Bluetooth Serial Port Profile (SPP)
+## Environment Tested On
+1. OpenJDK Java 11 by Amazon (sdkman 11.0.6-amzn)
+2. Pixel XL API 29 emulator
+3. Android Studio 3.6.2
 
-For an overview on Android Bluetooth communication see 
-[Android Bluetooth Overview](https://developer.android.com/guide/topics/connectivity/bluetooth).
+I am maintaining this on my own, and as such am unable to test on multiple devices and environments.
 
-This App implements RFCOMM connection to the well-known SPP UUID 00001101-0000-1000-8000-00805F9B34FB
+You can support me buy contributing code, filing bugs, asking/answering questions, or buying me a coffee.
 
-## Motivation
+<a href='https://ko-fi.com/bytehala' target='_blank'>
+  <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+</a>
 
-I got various requests asking for help with Android development or source code for my 
-[Serial Bluetooth Terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal) app.
-Here you find a simplified version of my app.
+## Getting Started
+1. Download the code `git clone http://www.github.com/bytehala/android-mqtt-quickstart`
+2. Open the project in Android Studio
+3. Build and run it.
+
+## Using the Sample App
+To test the app, you need an MQTT broker. Luckily, HiveMQ provides a free one which we can use for testing.
+![HiveMQ broker](http://i.imgur.com/zStIVr4.png "MQTT Settings")
+
+After successfully connecting, you can start subscribing and publishing to topics using the app.
+![Subscribing](http://i.imgur.com/dPSryih.png "Subscribing")
+
+![Success](http://i.imgur.com/gao1R0x.png "Success")
+
+## More About MQTT
+MQTT is a messaging protocol which has applications in the Internet of Things (IoT).
+This sample project uses Eclipse's open-source implementation called the Paho Project.
+If you go to the [original source](https://github.com/eclipse/paho.mqtt.java) where I lifted this project from, there are non-Android sample projects that use the Paho library.
+
+This youtube video explains the MQTT for IoT at a very basic level.
+
+[![](http://img.youtube.com/vi/1XzC3WqmiBs/0.jpg)](http://www.youtube.com/watch?v=1XzC3WqmiBs "Basics of MQTT IoT")
+
+Learn more about the other MQTT options such as QOS, Last Will, etc from this really helpful 12 part series by HiveMQ
+http://www.hivemq.com/blog/mqtt-essentials/
+
+## Create Your Own App
+All you need is an MQTT broker.  
+This app is just piggybacking on HiveMQ's free broker.
+
+Take note of the dependencies in this project.
+`org.eclipse.paho.android.service` and `org.eclipse.paho.client.mqttv3` depend on the old android-support-v4, specifically the LocalBroadcastManager class.
+
+Maybe we can migrate to mqttv5 using the plain Java library at https://github.com/eclipse/paho.mqtt.java
+
+The eclipse sources can be found at:
+https://github.com/eclipse/paho.mqtt.android
+
+Honestly, when I made an MQTT app for a client, I just built on top of this sample project.
+
+# Word of Warning
+This app was made in 2015-2016, and is a demo of how to use the Eclipse MQTT Libraries, not how to code in Android.
+
+Architecture components are a thing now, and I strongly advise the use of ViewModel and LifecycleHook.
+
+# Work In Progress
+Definitely look at the "jetpacknav" branch which aims to transform everything into a Single-Activity application, which has been the Android recommendation since 2018. It's currently a work in progress but a clear example of how to transform legacy apps from the old Android paradigm (multiple-Activity) to the newer ones (single-Activity Jetpack).
+
+# MQTT V3 vs V5
+This project uses MQTT v3 and I will be looking into using v3 and v5 in the near future.

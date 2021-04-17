@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:text="Comunicação Bluetooth em tempo real:" />
+        android:text="Mensagens da comunicação Bluetooth:" />
 
     <TextView
         android:id="@+id/receive_text"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:text="Coletar média de 15 dias:" />
+        android:text="Realiza comunicação com a saca:" />
 
     <Button
         android:id="@+id/botaoExecutar"
@@ -45,25 +45,30 @@
         android:layout_marginEnd="0dp"
         android:background="@drawable/bordas_botao"
         android:layout_below="@id/receive_text"
-        android:text="Coletar" />
+        android:text="Coletar atual" />
 
-    <View
+    <Button
+        android:id="@+id/botaoExecutar15"
         android:layout_width="match_parent"
-        android:background="?android:attr/listDivider"
-        android:layout_height="2dp" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/bordas_botao"
+        android:layout_below="@id/receive_text"
+        android:text="Coletar 15 dias" />
 
     <TextView
         android:id="@+id/textViewTitle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:text="Média dos dados:" />
+        android:text="Útima coleta recebida:" />
 
     <TableLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="wrap_content">
         <TableRow
             android:id="@+id/tableRow1"
             android:layout_height="wrap_content"
@@ -71,7 +76,7 @@
 
             <TextView
                 android:id="@+id/TextView01"
-                android:text="Identificador"
+                android:text="🌱 Identificador"
                 android:layout_weight="1"
                 android:padding="20dip"
                 android:layout_marginRight="15dp"
@@ -79,7 +84,7 @@
 
             <TextView
                 android:id="@+id/TextView02"
-                android:text="Temperatura"
+                android:text="🌡 Temperatura"
                 android:layout_weight="1"
                 android:padding="20dip"
                 android:layout_marginRight="15dp"
@@ -87,7 +92,7 @@
 
             <TextView
                 android:id="@+id/TextView03"
-                android:text="Umidade"
+                android:text="💧 Umidade"
                 android:layout_weight="1"
                 android:padding="20dip"
                 android:gravity="center"/>
@@ -126,6 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
         android:text="Enviar para a nuvem:" />
     <Button
         android:id="@+id/botoaMosquitto"
