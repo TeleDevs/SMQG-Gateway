@@ -110,7 +110,8 @@ public class DevicesFragment extends ListFragment {
         fragment = new TerminalFragment();
         fragment.setArguments(args);
 //        getFragmentManager().beginTransaction().replace(R.id.fragment, fragment, "terminal").addToBackStack(null).commit();
-        getFragmentManager().popBackStackImmediate();
+//        getFragmentManager().popBackStackImmediate();
+        getActivity().onBackPressed();
     }
 
     /**

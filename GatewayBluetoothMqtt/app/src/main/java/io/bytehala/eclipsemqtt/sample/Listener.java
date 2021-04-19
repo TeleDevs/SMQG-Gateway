@@ -30,6 +30,7 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import io.bytehala.eclipsemqtt.sample.ActionListener.Action;
 import io.bytehala.eclipsemqtt.sample.Connection.ConnectionStatus;

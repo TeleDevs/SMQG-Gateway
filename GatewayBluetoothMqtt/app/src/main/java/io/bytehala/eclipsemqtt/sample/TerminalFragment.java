@@ -190,7 +190,6 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_terminal, menu);
-        menu.findItem(R.id.hex).setChecked(hexEnabled);
     }
 
     @Override
@@ -213,13 +212,6 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
                 dialog.dismiss();
             });
             builder.create().show();
-            return true;
-        } else if (id == R.id.hex) {
-            hexEnabled = !hexEnabled;
-            sendText.setText("");
-            hexWatcher.enable(hexEnabled);
-            sendText.setHint(hexEnabled ? "HEX mode" : "");
-            item.setChecked(hexEnabled);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -295,20 +287,20 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
             String msg = new String(data);
             try {
                 JSONObject jsonObject = new JSONObject(msg);
-                if(jsonObject.has("id") && jsonObject.has("tmp") && jsonObject.has("umi")) {
+                if(jsonObject.has("id") && jsonObject.has("tmp") &&
+                        jsonObject.has("umi") && jsonObject.has("dia")) {
                     String idLido = jsonObject.get("id").toString();
                     String tempLida = jsonObject.get("tmp").toString();
                     String umiLida = jsonObject.get("umi").toString();
+                    String diaLido = jsonObject.get("dia").toString();
 
                     idText.setText(idLido);
                     tempText.setText(tempLida);
                     umiText.setText(umiLida);
 
-                    Coletas c = new Coletas(idLido, idGateway, tempLida, umiLida, "sem data...");
+                    Coletas c = new Coletas(idLido, idGateway, tempLida, umiLida, diaLido);
 
                     this.setLeitura(c);
-                }else {
-                    idText.setText(jsonObject.get("idi").toString());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
