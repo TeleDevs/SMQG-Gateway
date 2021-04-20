@@ -301,11 +301,11 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
                     String idLido = SerialService.socket.getEndereco();
                     idGateway = NewConnectionActivity.getLocal();
 
+                    Coletas c = new Coletas(idGateway, idLido, tempLida, umiLida, diaLido);
                     idText.setText(idGateway);
+
                     tempText.setText(tempLida += " °C");
                     umiText.setText(umiLida += "%");
-
-                    Coletas c = new Coletas(idGateway, idLido, tempLida, umiLida, diaLido);
 
                     this.setLeitura(c);
                 }

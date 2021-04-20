@@ -48,6 +48,6 @@ public class Coletas {
     @Override
     public String toString() {
         return "{\"idLocal\":\"" + idLocal + "\",\"idSensor\":\"" + id + "\",\"temperature\":" +
-               temp + ",\"humidity\":" + umi + ",\"datetime\":" + data + '}';
+               temp + ",\"humidity\":" + umi + ",\"datetime\":\"" + data + "\"}";
     }
 }
