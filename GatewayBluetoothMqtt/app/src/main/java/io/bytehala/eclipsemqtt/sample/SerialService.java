@@ -44,7 +44,7 @@ public class SerialService extends Service implements SerialListener {
     private final IBinder binder;
     private final Queue<QueueItem> queue1, queue2;
 
-    private SerialSocket socket;
+    public static SerialSocket socket;
     private SerialListener listener;
     private boolean connected;
 

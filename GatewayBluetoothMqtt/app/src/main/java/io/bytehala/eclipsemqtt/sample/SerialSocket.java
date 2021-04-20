@@ -45,6 +45,10 @@ class SerialSocket implements Runnable {
         return device.getName() != null ? device.getName() : device.getAddress();
     }
 
+    String getEndereco() {
+        return device.getAddress();
+    }
+
     /**
      * connect-success and most connect-errors are returned asynchronously to listener
      */

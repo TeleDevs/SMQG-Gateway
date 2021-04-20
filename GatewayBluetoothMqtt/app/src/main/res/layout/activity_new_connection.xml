@@ -33,6 +33,7 @@ IBM Corp.
             android:layout_height="wrap_content"
             android:layout_weight="0.22"
             android:ems="10"
+            android:text="GRAO"
             android:inputType="text" />
     </LinearLayout>
 
@@ -56,7 +57,7 @@ IBM Corp.
             android:layout_height="wrap_content"
             android:layout_weight="0.22"
             android:ems="10"
-            android:hint="@string/serverURIHint"
+            android:text="mqtt.sj.ifsc.edu.br"
             android:inputType="text" />
     </LinearLayout>
 
@@ -80,8 +81,32 @@ IBM Corp.
             android:layout_height="wrap_content"
             android:layout_weight="0.22"
             android:ems="10"
-            android:hint="@string/portHint"
+            android:text="@string/portHint"
             android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/localGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/portGroup" >
+
+        <TextView
+            android:id="@+id/localTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35dip"
+            android:text="Local" />
+
+        <EditText
+            android:id="@+id/local"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.22"
+            android:ems="10"
+            android:hint="Local do armazenamento"
+            android:inputType="text" />
     </LinearLayout>
 
     <LinearLayout
@@ -89,7 +114,7 @@ IBM Corp.
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/portGroup" >
+        android:layout_below="@id/localGroup" >
 
         <TextView
             android:id="@+id/cleanSessionTextView"

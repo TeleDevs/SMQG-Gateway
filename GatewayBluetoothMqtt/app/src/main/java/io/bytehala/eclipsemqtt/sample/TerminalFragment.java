@@ -47,6 +47,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -163,6 +164,10 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
         idText = view.findViewById(R.id.identificador);
         tempText = view.findViewById(R.id.temp);
         umiText = view.findViewById(R.id.umi);
+
+        idText.setText("-");
+        tempText.setText("- °C");
+        umiText.setText("- %");
 
         TextView txt1 = view.findViewById(R.id.TextView01);
         TextView txt2 = view.findViewById(R.id.TextView02);
@@ -287,18 +292,20 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
             String msg = new String(data);
             try {
                 JSONObject jsonObject = new JSONObject(msg);
-                if(jsonObject.has("id") && jsonObject.has("tmp") &&
+                if(jsonObject.has("tmp") &&
                         jsonObject.has("umi") && jsonObject.has("dia")) {
-                    String idLido = jsonObject.get("id").toString();
                     String tempLida = jsonObject.get("tmp").toString();
                     String umiLida = jsonObject.get("umi").toString();
                     String diaLido = jsonObject.get("dia").toString();
 
-                    idText.setText(idLido);
-                    tempText.setText(tempLida);
-                    umiText.setText(umiLida);
+                    String idLido = SerialService.socket.getEndereco();
+                    idGateway = NewConnectionActivity.getLocal();
 
-                    Coletas c = new Coletas(idLido, idGateway, tempLida, umiLida, diaLido);
+                    idText.setText(idGateway);
+                    tempText.setText(tempLida += " °C");
+                    umiText.setText(umiLida += "%");
+
+                    Coletas c = new Coletas(idGateway, idLido, tempLida, umiLida, diaLido);
 
                     this.setLeitura(c);
                 }
@@ -327,6 +334,10 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
         receiveText.append(spn);
     }
 
+    private void sendDiaHora(int time){
+        this.send("{\"cod\":0,\"time\":" + time + "}");
+    }
+
     /*
      * SerialListener
      */
@@ -334,6 +345,8 @@ public class TerminalFragment extends Fragment implements ServiceConnection, Ser
     public void onSerialConnect() {
         status("Conectado");
         connected = Connected.True;
+        int i = (int) (new Date().getTime()/1000);
+        this.sendDiaHora(i);
     }
 
     @Override

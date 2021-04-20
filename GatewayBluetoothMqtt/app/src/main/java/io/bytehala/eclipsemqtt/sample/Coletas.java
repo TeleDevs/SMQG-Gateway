@@ -1,14 +1,14 @@
 package io.bytehala.eclipsemqtt.sample;
 
 public class Coletas {
-    private String idGateway;
+    private String idLocal;
     private String id;
     private String temp;
     private String umi;
     private String data;
 
-    public Coletas(String idGateway, String id, String temp, String umi, String data) {
-        this.idGateway = idGateway;
+    public Coletas(String idLocal, String id, String temp, String umi, String data) {
+        this.idLocal = idLocal;
         this.id = id;
         this.temp = temp;
         this.umi = umi;
@@ -47,7 +47,7 @@ public class Coletas {
 
     @Override
     public String toString() {
-        return "{\"idGateway\":" + idGateway + ",\"idSensor\":" + id + ",\"temperature\":" +
+        return "{\"idLocal\":\"" + idLocal + "\",\"idSensor\":\"" + id + "\",\"temperature\":" +
                temp + ",\"humidity\":" + umi + ",\"datetime\":" + data + '}';
     }
 }

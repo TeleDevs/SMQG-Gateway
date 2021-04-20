@@ -16,5 +16,6 @@ IBM Corp.
     android:layout_height="fill_parent"
     android:focusable="false"
     android:padding="10dp"
-    android:drawableRight="@drawable/arrow" 
+    android:drawableRight="@drawable/arrow"
+    android:background="@drawable/bordas"
 />

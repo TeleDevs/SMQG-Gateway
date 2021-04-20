@@ -183,12 +183,21 @@ public class NewConnectionActivity extends AppCompatActivity {
 
   }
 
+  static String local;
+  public static String getLocal(){
+    return local;
+  }
   private void doConnectAction() {
     Intent dataBundle = new Intent();
     //extract client information
-    String server = "mqtt.sj.ifsc.edu.br";
-    String port = "1883";
-    String clientId = "sistemagraos";
+    String server = ((AutoCompleteTextView) findViewById(R.id.serverURI))
+            .getText().toString();
+    String port = ((EditText) findViewById(R.id.port))
+            .getText().toString();
+    String clientId = ((EditText) findViewById(R.id.clientId))
+            .getText().toString();
+    this.local = ((EditText) findViewById(R.id.local))
+            .getText().toString();
 
     if (server.equals(ActivityConstants.empty) || port.equals(ActivityConstants.empty) || clientId.equals(ActivityConstants.empty))
     {

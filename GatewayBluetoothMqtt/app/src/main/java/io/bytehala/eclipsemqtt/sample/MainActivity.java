@@ -88,10 +88,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         FloatingActionButton fab = findViewById(R.id.addConnectionFab);
-        FloatingActionButton fabBlu = findViewById(R.id.addBlu);
 
         fab.setOnClickListener(view -> createAndConnect());
-        fabBlu.setOnClickListener(view -> adicionarBlu());
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.connection_text_view);
         listView.setAdapter(arrayAdapter);

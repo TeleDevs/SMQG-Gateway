@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/clear"
-        android:title="Clear"
+        android:title="Limpar"
         app:showAsAction="never" />
     <item
         android:id="@+id/conectBlu"
@@ -11,6 +11,6 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/newline"
-        android:title="Newline"
+        android:title="Nova Linha"
         app:showAsAction="never" />
 </menu>

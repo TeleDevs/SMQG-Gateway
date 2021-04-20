@@ -20,6 +20,6 @@ IBM Corp.
         android:visible="false" />
     <item
         android:id="@+id/disconnect"
-        compat:showAsAction="ifRoom"
+        compat:showAsAction="never"
         android:title="@string/Disconnect" />
 </menu>
