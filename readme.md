@@ -1,5 +1,12 @@
 # SMQG-Gateway
 
+O desenvolvimento deste aplicativo foi baseado em nos seguintes repositórios:
+
+- [SimpleBluetoothTerminal](https://github.com/kai-morich/SimpleBluetoothTerminal)
+- [android-mqtt-quickstart](https://github.com/bytehala/android-mqtt-quickstart)
+
+
+> ⚠️ A seguir, desenvolvimento da versão LORA (antiga):
 
 ## Configuração de acesso a rasp SSH via WiFi
 
